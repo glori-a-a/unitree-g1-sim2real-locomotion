@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.env
+.idea/
+.vscode/
+.DS_Store
+
+# Training and deployment artifacts
+logs/
+runs/
+checkpoints/
+artifacts/
+*.pt
+*.pth
+*.onnx
+*.bag
+*.db3
+
+# Isaac Lab / simulator outputs
+outputs/
+wandb/
