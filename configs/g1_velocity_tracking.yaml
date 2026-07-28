@@ -1,0 +1,45 @@
+project:
+  name: unitree-g1-sim2real-locomotion
+  status: active-development
+
+control:
+  policy_frequency_hz: 50
+  simulation_frequency_hz: 500
+  decimation: 10
+  action_scale: 0.25
+  action_clip: 1.0
+  joint_target_clip_rad: 0.5
+
+commands:
+  linear_velocity_x_mps: [-0.8, 0.8]
+  linear_velocity_y_mps: [-0.3, 0.3]
+  yaw_velocity_rps: [-0.8, 0.8]
+
+observations:
+  components:
+    - base_angular_velocity
+    - projected_gravity
+    - velocity_command
+    - joint_position_error
+    - joint_velocity
+    - previous_action
+  clip: 100.0
+
+normalization:
+  base_angular_velocity_scale: 0.25
+  joint_position_scale: 1.0
+  joint_velocity_scale: 0.05
+  command_linear_scale: 2.0
+  command_yaw_scale: 0.25
+
+safety:
+  enable_action_clipping: true
+  enable_joint_limit_checks: true
+  enable_torque_limit_checks: true
+  emergency_stop_on_nan: true
+  emergency_stop_on_orientation_limit: true
+  max_roll_rad: 0.7
+  max_pitch_rad: 0.7
+
+# Placeholder values must be replaced with verified parameters from the
+# selected G1 model, trained policy, MuJoCo asset, and Unitree SDK2 interface.
